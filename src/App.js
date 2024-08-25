@@ -65,12 +65,12 @@ function App() {
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const url = 'https://open-weather13.p.rapidapi.com/city/Mumbai/EN';
+      const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13';
       const options = {
         method: 'GET',
         headers: {
           'x-rapidapi-key': '84f84cce6dmshf17a7f32e9992f9p132756jsna785bcedde18',
-          'x-rapidapi-host': 'open-weather13.p.rapidapi.com'
+          'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
         }
       };
 
@@ -81,7 +81,7 @@ function App() {
         }
         const data = await response.json();
         setWeatherData(data); // Save the data to state
-        console.log(data)
+        console.log(data);
       } catch (error) {
         setError(error.message);
        } 
@@ -106,10 +106,10 @@ function App() {
       <h1>Weather Data</h1>
       {weatherData && (
         <div>
-          <p>City: {weatherData.name}</p>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
-          <p>Temp Min : {weatherData.main.temp_min}</p>
+          <p>City: {weatherData.location.name}</p>
+           <p>Temperature: {weatherData.current.temp_c}°C</p>
+          {/*<p>Weather: {weatherData.weather[0].description}</p>
+          <p>Temp Min : {weatherData.main.temp_min}</p> */}
         </div>
       )}
     </div>
